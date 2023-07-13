@@ -9,17 +9,11 @@ class Recipe {
   }
 
   isValid() {
-    if (
-      typeof this.name === "string" &&
-      Array.isArray(this.ingredients) &&
-      typeof this.instructions === "string" &&
-      typeof this.cookingTime === "number"
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+    return typeof this.name === "string" &&
+        Array.isArray(this.ingredients) &&
+        typeof this.instructions === "string" &&
+        typeof this.cookingTime === "number";
+}
 }
 
 class RecipeBook {
@@ -33,6 +27,7 @@ class RecipeBook {
       console.log("Невалідний рецепт. Рецепт не було додано до книги рецептів.");
     }
   }
+
   findRecipesByCookingTime(cookingTime) {
     const recipesByCookingTime = this.recipes.filter(recipe => recipe.cookingTime <= cookingTime);
     const recipeNames = recipesByCookingTime.map(recipe => recipe.name);
@@ -71,8 +66,8 @@ recipeBook.addRecipe(recipe4);
 const recipe5 = new Recipe('Рагу', ['цибуля', 'помідор'], ['картопля']);
 recipeBook.addRecipe(recipe5);
 
-console.log(recipeBook.findRecipesByCookingTime(60));
-console.log(recipeBook.findRecipesByIngredients(['Картопля', 'Морква']));
+recipeBook.findRecipesByCookingTime(60);
+recipeBook.findRecipesByIngredients(['Картопля', 'Морква']);
 recipeBook.printRecipes();
 
 
