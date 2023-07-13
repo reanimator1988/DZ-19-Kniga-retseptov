@@ -10,10 +10,10 @@ class Recipe {
 
   isValid() {
     return typeof this.name === "string" &&
-        Array.isArray(this.ingredients) &&
-        typeof this.instructions === "string" &&
-        typeof this.cookingTime === "number";
-}
+      Array.isArray(this.ingredients) &&
+      typeof this.instructions === "string" &&
+      typeof this.cookingTime === "number";
+  }
 }
 
 class RecipeBook {
@@ -25,6 +25,7 @@ class RecipeBook {
       console.log("Рецепт успішно доданий до книги рецептів.");
     } else {
       console.log("Невалідний рецепт. Рецепт не було додано до книги рецептів.");
+
     }
   }
 
@@ -33,6 +34,7 @@ class RecipeBook {
     const recipeNames = recipesByCookingTime.map(recipe => recipe.name);
     const message = `Рецепти з часом приготування не довше ${cookingTime} хвилин: ${recipeNames.join(', ')}`;
     console.log(message);
+    return recipesByCookingTime;
   }
 
   findRecipesByIngredients(ingredients) {
@@ -43,7 +45,9 @@ class RecipeBook {
     const recipeNames = recipesByIngredients.map(recipe => recipe.name);
     const message = `Рецепти з інгредієнтами ${ingredients.join(', ')}: ${recipeNames.join(', ')}`;
     console.log(message);
+    return recipesByIngredients;
   }
+
   printRecipes() {
     console.log(this.recipes);
   }
@@ -69,15 +73,3 @@ recipeBook.addRecipe(recipe5);
 recipeBook.findRecipesByCookingTime(60);
 recipeBook.findRecipesByIngredients(['Картопля', 'Морква']);
 recipeBook.printRecipes();
-
-
-
-
-
-
-
-
-
-
-
-
